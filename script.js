@@ -86,13 +86,21 @@ function sendToWhatsApp() {
     const deliveryText = deliveryCheck.checked ? "Sim (+R$10)" : "Não (Levarei na loja)";
     const priceText = priceEl.textContent;
 
-    const msg = `Olá, equipe Nexus Tech! Fiz uma simulação pelo site:\n\n` +
-                `📱 *Equipamento:* ${deviceText}\n` +
-                `🔧 *Serviço:* ${serviceText}\n` +
-                `🚚 *Busca em Casa:* ${deliveryText}\n` +
-                `💰 *Valor Estimado:* ${priceText}\n\n` +
-                `Gostaria de agendar para fazer o conserto!`;
+    // Mensagem formatada de forma limpa usando Template Literals
+    const msg = `Olá, equipe Nexus Tech! Fiz uma simulação pelo site:
 
-    const whatsappNum = "5545998196588"; // Substitua pelo número real da loja
-    window.open(`https://wa.me/${whatsappNum}?text=${encodeURIComponent(msg)}`, '_blank');
+📱 *Equipamento:* ${deviceText}
+🔧 *Serviço:* ${serviceText}
+🚚 *Busca em Casa:* ${deliveryText}
+💰 *Valor Estimado:* ${priceText}
+
+Gostaria de agendar para fazer o conserto!`;
+
+    // Número correto da loja
+    const whatsappNum = "5545998196588"; 
+    
+    // Monta a URL separadamente para garantir que não haja erros de sintaxe
+    const whatsappUrl = `https://wa.me/${whatsappNum}?text=${encodeURIComponent(msg)}`;
+    
+    window.open(whatsappUrl, '_blank');
 }
