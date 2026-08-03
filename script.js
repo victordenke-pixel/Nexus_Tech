@@ -93,6 +93,6 @@ function sendToWhatsApp() {
                 `💰 *Valor Estimado:* ${priceText}\n\n` +
                 `Gostaria de agendar para fazer o conserto!`;
 
-    const whatsappNum = "5545999999999"; // Substitua pelo número real da loja
+    const whatsappNum = "5545998196588"; // Substitua pelo número real da loja
     window.open(`https://wa.me/${whatsappNum}?text=${encodeURIComponent(msg)}`, '_blank');
 }
