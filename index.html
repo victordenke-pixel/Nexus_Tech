@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Tech | Assistência Técnica em Matelândia - PR</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container nav-wrapper">
+            <div class="logo">NEXUS <span>TECH</span></div>
+            <div class="badge-location">📍 Matelândia - PR</div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1>Assistência Técnica Rápida e com <span>Preço Justo</span></h1>
+            <p>Conserto de Celulares, Notebooks, PCs e Consoles. Sem preços abusivos e com orçamento 100% gratuito!</p>
+            
+            <div class="hero-badges">
+                <span class="pill">⚡ Conserto no mesmo dia</span>
+                <span class="pill">💰 Preços Populares</span>
+                <span class="pill">🔒 Backup Seguro</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculadora de Orçamento -->
+    <section class="calc-section">
+        <div class="container">
+            <div class="calc-box">
+                <div class="calc-header">
+                    <h2 class="calc-title">⚡ Orçamento Instantâneo</h2>
+                    <p class="calc-sub">Monte o seu pedido e veja o valor estimado na hora:</p>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="device">1. Escolha o Aparelho:</label>
+                    <select id="device" class="form-select">
+                        <option value="">-- Selecione o equipamento --</option>
+                        <option value="celular">📱 Celular / Smartphone</option>
+                        <option value="notebook">💻 Notebook</option>
+                        <option value="computador">🖥️ Computador de Mesa (PC)</option>
+                        <option value="console">🎮 Console / Videogame</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="service">2. Escolha o Serviço:</label>
+                    <select id="service" class="form-select">
+                        <option value="">-- Primeiro selecione o equipamento acima --</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="delivery-check">
+                        <input type="checkbox" id="delivery">
+                        <span>Quero busca e entrega em casa (Matelândia) (+ R$ 10,00)</span>
+                    </label>
+                </div>
+
+                <div class="result-panel">
+                    <div class="price-label">Estimativa de Preço:</div>
+                    <div class="price-value" id="final-price">R$ 0,00</div>
+                    <div class="price-note">* Diagnóstico final sem custo na loja. Cobramos preço justo pela mão de obra!</div>
+
+                    <button class="btn-whatsapp" id="btn-whatsapp">
+                        💬 Enviar Orçamento Direto no WhatsApp
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vantagens -->
+    <section class="advantages">
+        <div class="container">
+            <h2 class="section-title">Por que consertar conosco?</h2>
+            <div class="grid-2x2">
+                <div class="card-adv">
+                    <div class="card-adv-icon">🏷️</div>
+                    <h3>Preço Acessível</h3>
+                    <p>Valores populares que cabem no bolso. Consertar sai muito mais barato do que comprar outro novo.</p>
+                </div>
+                <div class="card-adv">
+                    <div class="card-adv-icon">⚡</div>
+                    <h3>Máxima Agilidade</h3>
+                    <p>Serviço rápido para você não ficar isolado do trabalho, família ou jogos.</p>
+                </div>
+                <div class="card-adv">
+                    <div class="card-adv-icon">🔒</div>
+                    <h3>Segurança dos Dados</h3>
+                    <p>Fazemos backup preventivo das suas fotos, conversas e arquivos antes de qualquer procedimento.</p>
+                </div>
+                <div class="card-adv">
+                    <div class="card-adv-icon">🛡️</div>
+                    <h3>Garantia de 90 Dias</h3>
+                    <p>Garantia oficial em peças e mão de obra com transparência e honestidade.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços -->
+    <section class="services-section">
+        <div class="container">
+            <h2 class="section-title">O que nós arrumamos</h2>
+            <div class="grid-services">
+                <div class="service-card">
+                    <div class="service-header">
+                        <span class="icon">📱</span>
+                        <h3>Celulares</h3>
+                    </div>
+                    <ul class="service-list">
+                        <li>Troca de Tela / Display</li>
+                        <li>Troca de Bateria viciada</li>
+                        <li>Conector de Carga</li>
+                        <li>Banho Químico (molhado)</li>
+                        <li>Microssoldagem em Placa</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-header">
+                        <span class="icon">💻</span>
+                        <h3>Notebooks</h3>
+                    </div>
+                    <ul class="service-list">
+                        <li>Limpeza Interna + Pasta Térmica</li>
+                        <li>Formatação com Backup</li>
+                        <li>Upgrade de SSD e Memória RAM</li>
+                        <li>Troca de Teclado e Tela</li>
+                        <li>Recuperação de Dobradiças</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-header">
+                        <span class="icon">🖥️</span>
+                        <h3>Computadores (PC)</h3>
+                    </div>
+                    <ul class="service-list">
+                        <li>Formatação e Instalação Windows</li>
+                        <li>Limpeza Geral e Organização</li>
+                        <li>Montagem e Upgrade de Peças</li>
+                        <li>Otimização para Jogos</li>
+                        <li>Troca de Fonte e Placa-Mãe</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-header">
+                        <span class="icon">🎮</span>
+                        <h3>Consoles</h3>
+                    </div>
+                    <ul class="service-list">
+                        <li>Limpeza Profunda + Pasta Térmica</li>
+                        <li>Conserto de Controle (Drift)</li>
+                        <li>Troca de Conector HDMI</li>
+                        <li>Upgrade de HD para SSD</li>
+                        <li>Reparo em Fonte Interna</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p><strong>Nexus Tech Matelândia</strong> | Centro - Matelândia/PR</p>
+            <p style="margin-top: 6px;">Segunda a Sexta: 08h às 18h | Sábado: 08h às 12h</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
