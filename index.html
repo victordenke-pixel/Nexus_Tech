@@ -3,181 +3,1287 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexus Tech | Assistência Técnica em Matelândia - PR</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Nexus Tech | Assistência Técnica de Elite em Matelândia - PR</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* --- RESET E VARIÁVEIS CYBER-GLAMOUR --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        :root {
+            --bg-dark: #06040d;
+            --bg-card: rgba(18, 12, 36, 0.75);
+            --bg-card-hover: rgba(28, 18, 56, 0.9);
+            --primary-purple: #9d4edd;
+            --neon-purple: #c77dff;
+            --dark-purple: #240046;
+            --accent-cyan: #00f5d4;
+            --accent-pink: #ff007f;
+            --text-light: #f8f9fa;
+            --text-muted: #a0a0b8;
+            --border-glow: rgba(199, 125, 255, 0.2);
+            --border-active: rgba(0, 245, 212, 0.5);
+            --warning-yellow: #ffbe0b;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* --- ANIMAÇÃO DE ENTRADA AO ROLAR --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- BACKGROUND DE ORBES ANIMADOS --- */
+        .bg-glow {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(130px);
+            opacity: 0.35;
+            animation: float 14s infinite ease-in-out alternate;
+        }
+
+        .orb-1 { width: 450px; height: 450px; background: var(--primary-purple); top: -100px; left: -100px; }
+        .orb-2 { width: 500px; height: 500px; background: var(--dark-purple); bottom: -100px; right: -100px; animation-delay: -6s; }
+        .orb-3 { width: 300px; height: 300px; background: var(--accent-pink); top: 45%; left: 40%; opacity: 0.15; animation-delay: -3s; }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(60px, 40px) scale(1.15); }
+        }
+
+        /* --- HEADER COM MENU RESPONSIVO --- */
+        header {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            padding: 1rem 0;
+            background: rgba(6, 4, 13, 0.85);
+            backdrop-filter: blur(20px);
+            z-index: 100;
+            border-bottom: 1px solid var(--border-glow);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: #fff;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .logo span {
+            color: var(--neon-purple);
+            text-shadow: 0 0 15px rgba(199, 125, 255, 0.6);
+        }
+
+        nav {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-cyan);
+            text-shadow: 0 0 10px rgba(0, 245, 212, 0.5);
+        }
+
+        .badge-location {
+            background: rgba(0, 245, 212, 0.08);
+            border: 1px solid rgba(0, 245, 212, 0.3);
+            color: var(--accent-cyan);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-cyan);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent-cyan);
+            animation: pulse 1.8s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.3; transform: scale(0.8); }
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        /* --- HERO --- */
+        .hero {
+            padding: 5.5rem 0 3.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(199, 125, 255, 0.08);
+            border: 1px solid rgba(199, 125, 255, 0.3);
+            color: var(--neon-purple);
+            padding: 0.4rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.3rem, 5vw, 3.8rem);
+            font-weight: 800;
+            margin-bottom: 1.2rem;
+            line-height: 1.15;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--neon-purple), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: var(--text-muted);
+            max-width: 680px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-purple), var(--dark-purple));
+            color: #fff;
+            padding: 1rem 2.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            box-shadow: 0 0 25px rgba(157, 78, 221, 0.4);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(199, 125, 255, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 35px rgba(199, 125, 255, 0.6);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            padding: 1rem 2.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+        }
+
+        /* --- TÍTULOS PADRÃO --- */
+        .section-title {
+            text-align: center;
+            font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+            margin-bottom: 2.5rem;
+            color: #fff;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .section-title span {
+            color: var(--neon-purple);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--neon-purple), var(--accent-cyan));
+            margin: 0.8rem auto 0;
+            border-radius: 4px;
+        }
+
+        /* --- HISTÓRIA --- */
+        .story-section { padding: 4.5rem 0; }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .story-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glow);
+            border-radius: 28px;
+            padding: 2.5rem;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+        }
+
+        .story-card h3 {
+            font-size: 1.6rem;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+
+        .story-card p {
+            color: var(--text-muted);
+            font-size: 0.98rem;
+            margin-bottom: 1.2rem;
+            line-height: 1.7;
+        }
+
+        .story-timeline-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 1.2rem;
+            align-items: flex-start;
+            background: rgba(7, 5, 15, 0.6);
+            border: 1px solid rgba(199, 125, 255, 0.15);
+            padding: 1.2rem;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            border-color: var(--accent-cyan);
+            transform: translateX(5px);
+        }
+
+        .year-badge {
+            background: linear-gradient(135deg, var(--neon-purple), var(--primary-purple));
+            color: #fff;
+            font-weight: 800;
+            font-size: 0.85rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 10px;
+            white-space: nowrap;
+        }
+
+        /* --- RASTREIO DE CÓDIGO --- */
+        .tracker-section { padding: 4rem 0; }
+
+        .tracker-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glow);
+            border-radius: 28px;
+            padding: 2.8rem 2.2rem;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            max-width: 780px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tracker-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--neon-purple), var(--accent-pink));
+        }
+
+        .tracker-search-box {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .input-tracker {
+            flex: 1;
+            padding: 1rem 1.2rem;
+            border-radius: 14px;
+            background: rgba(6, 4, 13, 0.9);
+            border: 1px solid rgba(199, 125, 255, 0.3);
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .input-tracker:focus {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 15px rgba(0, 245, 212, 0.25);
+        }
+
+        .btn-tracker {
+            padding: 1rem 2rem;
+            border-radius: 14px;
+            border: none;
+            background: linear-gradient(135deg, var(--accent-cyan), #00b4d8);
+            color: #000;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+
+        .btn-tracker:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(0, 245, 212, 0.4);
+        }
+
+        .status-display {
+            display: none;
+            margin-top: 2rem;
+            padding: 1.8rem;
+            background: rgba(6, 4, 13, 0.95);
+            border: 1px solid var(--border-active);
+            border-radius: 20px;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .status-info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            padding-bottom: 1rem;
+        }
+
+        .info-item label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+        }
+
+        .info-item span {
+            font-weight: 700;
+            color: #fff;
+            font-size: 1.05rem;
+        }
+
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-top: 1.8rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 16px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: rgba(255,255,255,0.1);
+            z-index: 1;
+        }
+
+        .timeline-step {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            flex: 1;
+        }
+
+        .step-node {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: #120b24;
+            border: 2px solid rgba(255,255,255,0.2);
+            margin: 0 auto 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            transition: all 0.4s;
+        }
+
+        .step-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .timeline-step.active .step-node {
+            background: var(--accent-cyan);
+            border-color: var(--accent-cyan);
+            color: #000;
+            box-shadow: 0 0 15px var(--accent-cyan);
+        }
+
+        .timeline-step.active .step-label {
+            color: var(--accent-cyan);
+        }
+
+        /* --- DIFERENCIAIS VIP --- */
+        .features-section { padding: 3.5rem 0; }
+        
+        .grid-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            padding: 1.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--neon-purple);
+            background: var(--bg-card-hover);
+        }
+
+        .feature-icon {
+            font-size: 2.2rem;
+            margin-bottom: 0.8rem;
+            display: inline-block;
+        }
+
+        .feature-card h4 {
+            color: #fff;
+            font-size: 1.1rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+        }
+
+        /* --- CALCULADORA COM ESTIMATIVA --- */
+        .calc-section { padding: 4rem 0; }
+
+        .calc-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glow);
+            border-radius: 28px;
+            padding: 2.5rem;
+            max-width: 720px;
+            margin: 0 auto;
+            backdrop-filter: blur(20px);
+        }
+
+        .disclaimer-banner {
+            background: rgba(255, 190, 11, 0.1);
+            border: 1px solid rgba(255, 190, 11, 0.4);
+            border-radius: 14px;
+            padding: 0.85rem 1.2rem;
+            margin-bottom: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: #ffe6a7;
+            font-size: 0.86rem;
+            line-height: 1.4;
+        }
+
+        .disclaimer-banner span {
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .form-select {
+            width: 100%;
+            padding: 0.95rem;
+            border-radius: 12px;
+            background: rgba(6, 4, 13, 0.9);
+            border: 1px solid rgba(199, 125, 255, 0.25);
+            color: #fff;
+            margin-top: 0.4rem;
+            margin-bottom: 1.3rem;
+            outline: none;
+            font-size: 0.95rem;
+        }
+
+        .price-display-box {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(0, 245, 212, 0.05);
+            border: 1px dashed rgba(0, 245, 212, 0.3);
+            border-radius: 16px;
+            margin-bottom: 1.5rem;
+        }
+
+        .price-label {
+            font-size: 0.8rem;
+            color: var(--warning-yellow);
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .price-value {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--accent-cyan);
+            text-shadow: 0 0 20px rgba(0, 245, 212, 0.4);
+        }
+
+        .price-subnote {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-top: 0.3rem;
+        }
+
+        .btn-whatsapp-calc {
+            width: 100%;
+            padding: 1.1rem;
+            border-radius: 50px;
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(37, 211, 102, 0.35);
+            transition: all 0.3s;
+        }
+
+        .btn-whatsapp-calc:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(37, 211, 102, 0.5);
+        }
+
+        /* --- SERVIÇOS --- */
+        .services-section { padding: 4rem 0; }
+
+        .grid-services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            padding: 1.8rem;
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            border-color: var(--neon-purple);
+            transform: translateY(-4px);
+        }
+
+        .service-card h3 {
+            color: #fff;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .service-list { list-style: none; }
+        .service-list li {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .service-list li::before {
+            content: '✓';
+            color: var(--accent-cyan);
+            font-weight: bold;
+        }
+
+        /* --- DEPOIMENTOS --- */
+        .testimonials-section { padding: 4rem 0; }
+
+        .grid-testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .testi-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            padding: 1.8rem;
+        }
+
+        .testi-stars { color: #ffd166; margin-bottom: 0.8rem; font-size: 1rem; }
+        .testi-text { color: var(--text-muted); font-size: 0.93rem; font-style: italic; margin-bottom: 1.2rem; }
+        .testi-author { font-weight: 700; color: var(--neon-purple); font-size: 0.9rem; }
+
+        /* --- FAQ --- */
+        .faq-section { padding: 4rem 0; }
+        .faq-wrapper { max-width: 780px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem; }
+        .faq-item { background: var(--bg-card); border: 1px solid var(--border-glow); border-radius: 16px; overflow: hidden; }
+        .faq-question { width: 100%; padding: 1.3rem; background: none; border: none; color: #fff; font-size: 1rem; font-weight: 600; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.35s ease; color: var(--text-muted); font-size: 0.92rem; padding: 0 1.3rem; }
+        .faq-item.active .faq-answer { max-height: 180px; padding: 0 1.3rem 1.3rem 1.3rem; }
+
+        /* --- CONTATO --- */
+        .contact-section { padding: 4rem 0 6rem; }
+        
+        .contact-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glow);
+            border-radius: 28px;
+            padding: 2.8rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 100%;
+            min-height: 280px;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid var(--border-glow);
+        }
+
+        .map-container iframe { width: 100%; height: 100%; min-height: 280px; border: 0; }
+
+        .floating-wa {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 60px;
+            height: 60px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 25px rgba(37, 211, 102, 0.6);
+            z-index: 999;
+            text-decoration: none;
+            font-size: 1.8rem;
+            transition: transform 0.3s;
+        }
+
+        .floating-wa:hover { transform: scale(1.1); }
+
+        footer {
+            background: rgba(4, 2, 8, 0.98);
+            border-top: 1px solid var(--border-glow);
+            padding: 2.5rem 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 850px) {
+            .mobile-menu-btn { display: block; }
+            
+            nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(6, 4, 13, 0.98);
+                flex-direction: column;
+                padding: 1.5rem;
+                border-bottom: 1px solid var(--border-glow);
+                gap: 1.2rem;
+            }
+
+            nav.mobile-active { display: flex; }
+
+            .story-grid, .contact-box { grid-template-columns: 1fr; }
+
+            .tracker-search-box { flex-direction: column; }
+            .btn-tracker { width: 100%; }
+
+            .timeline { flex-direction: column; gap: 1rem; text-align: left; }
+            .timeline::before { display: none; }
+            .timeline-step { display: flex; align-items: center; gap: 1rem; }
+            .step-node { margin: 0; }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Header -->
+    <div class="bg-glow">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <a href="https://wa.me/5545999999999" target="_blank" class="floating-wa" title="Falar no WhatsApp">💬</a>
+
     <header>
         <div class="container nav-wrapper">
-            <div class="logo">NEXUS <span>TECH</span></div>
-            <div class="badge-location">📍 Matelândia - PR</div>
+            <a href="#" class="logo">NEXUS <span>TECH</span></a>
+
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+
+            <nav id="main-nav">
+                <a href="#historia" onclick="closeMobileMenu()">Como Começamos</a>
+                <a href="#rastreio" onclick="closeMobileMenu()">Consultar Reparo</a>
+                <a href="#calculadora" onclick="closeMobileMenu()">Simular Orçamento</a>
+                <a href="#servicos" onclick="closeMobileMenu()">Serviços</a>
+                <a href="#depoimentos" onclick="closeMobileMenu()">Clientes</a>
+                <a href="#contato" onclick="closeMobileMenu()">Contato</a>
+            </nav>
+
+            <div class="badge-location">
+                <div class="pulse-dot"></div> Matelândia - PR
+            </div>
         </div>
     </header>
 
-    <!-- Hero -->
     <section class="hero">
         <div class="container">
-            <h1>Assistência Técnica Rápida e com <span>Preço Justo</span></h1>
-            <p>Conserto de Celulares, Notebooks, PCs e Consoles. Sem preços abusivos e com orçamento 100% gratuito!</p>
-            
-            <div class="hero-badges">
-                <span class="pill">⚡ Conserto no mesmo dia</span>
-                <span class="pill">💰 Preços Populares</span>
-                <span class="pill">🔒 Backup Seguro</span>
+            <div class="hero-tag">
+                <span>✨ ASSISTÊNCIA TÉCNICA DE ALTA PRECISÃO</span>
+            </div>
+            <h1>Tecnologia de Elite para <span>Salvar seu Aparelho</span></h1>
+            <p>Especialistas em smartphones, notebooks, computadores e videogames. Transparência total com código de acesso direto em nosso site.</p>
+            <div class="hero-buttons">
+                <a href="#rastreio" class="btn-primary">🔍 Rastrear meu Aparelho</a>
+                <a href="#calculadora" class="btn-secondary">⚡ Simular Orçamento</a>
             </div>
         </div>
     </section>
 
-    <!-- Calculadora de Orçamento -->
-    <section class="calc-section">
+    <section class="story-section reveal" id="historia">
         <div class="container">
+            <h2 class="section-title">Nossa Jornada | <span>Como Começamos</span></h2>
+            <div class="story-grid">
+                
+                <div class="story-card">
+                    <h3>💡 Do Amor por Tecnologia à Excelência</h3>
+                    <p>A <strong>Nexus Tech</strong> nasceu do sonho de oferecer um atendimento verdadeiramente transparente e humano em Matelândia/PR.</p>
+                    <p>Percebemos que os clientes sofriam com a falta de informações claras durante os consertos. Decidimos mudar isso criando um padrão de atendimento onde o cliente acompanha cada passo do reparo do seu equipamento em tempo real.</p>
+                    <p style="color: var(--accent-cyan); font-weight: 700;">Hoje somos referência em microssoldagem, troca de componentes e otimização de alta performance na região.</p>
+                </div>
+
+                <div class="story-timeline-list">
+                    <div class="timeline-item">
+                        <span class="year-badge">Passo 1</span>
+                        <div>
+                            <strong style="color: #fff;">Início em Matelândia</strong>
+                            <p style="color: var(--text-muted); font-size: 0.85rem;">Iniciamos com foco na manutenção especializada em smartphones e notebooks.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="year-badge">Passo 2</span>
+                        <div>
+                            <strong style="color: #fff;">Laboratório de Alta Precisão</strong>
+                            <p style="color: var(--text-muted); font-size: 0.85rem;">Investimento em microscópios e ferramentas avançadas para microssoldagem.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="year-badge">Hoje</span>
+                        <div>
+                            <strong style="color: #fff;">Inovação & Transparência</strong>
+                            <p style="color: var(--text-muted); font-size: 0.85rem;">Lançamos o portal conectado à nuvem onde o cliente acompanha o conserto direto pelo site!</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="tracker-section reveal" id="rastreio">
+        <div class="container">
+            <div class="tracker-card">
+                <div style="text-align: center;">
+                    <h3 style="color: #fff; font-size: 1.6rem; margin-bottom: 0.4rem;">🔎 Portal do Cliente - Rastrear Reparo</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Digite o código fornecido pela loja para acompanhar a situação:</p>
+                </div>
+
+                <div class="tracker-search-box">
+                    <input type="text" id="client-search-code" class="input-tracker" placeholder="Digite o Código (Ex: NX-1020)">
+                    <button class="btn-tracker" onclick="searchClientCode()">Consultar Status</button>
+                </div>
+
+                <div id="status-display" class="status-display">
+                    <div class="status-info-grid">
+                        <div class="info-item">
+                            <label>Aparelho / Equipamento</label>
+                            <span id="res-product">--</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Cliente</label>
+                            <span id="res-client">--</span>
+                        </div>
+                    </div>
+
+                    <p style="text-align: center; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.3rem;">STATUS ATUAL:</p>
+                    <p style="text-align: center; font-size: 1.25rem; font-weight: 800; color: var(--accent-cyan);" id="res-status-text">--</p>
+
+                    <div class="timeline">
+                        <div class="timeline-step active" id="step-1">
+                            <div class="step-node">1</div>
+                            <div class="step-label">Recebido</div>
+                        </div>
+                        <div class="timeline-step" id="step-2">
+                            <div class="step-node">2</div>
+                            <div class="step-label">Em Análise</div>
+                        </div>
+                        <div class="timeline-step" id="step-3">
+                            <div class="step-node">3</div>
+                            <div class="step-label">Em Reparo</div>
+                        </div>
+                        <div class="timeline-step" id="step-4">
+                            <div class="step-node">4</div>
+                            <div class="step-label">Pronto</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section reveal">
+        <div class="container">
+            <div class="grid-features">
+                <div class="feature-card">
+                    <span class="feature-icon">🔍</span>
+                    <h4>Diagnóstico Sem Custo</h4>
+                    <p>Avaliamos seu equipamento gratuitamente antes de realizar qualquer serviço.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🛡️</span>
+                    <h4>Garantia de 90 Dias</h4>
+                    <p>Garantia integral em peças e mão de obra para sua máxima tranquilidade.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">⚡</span>
+                    <h4>Agilidade Expressa</h4>
+                    <p>Serviços essenciais como troca de bateria e tela realizados no mesmo dia.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">💎</span>
+                    <h4>Peças de Primeira Linha</h4>
+                    <p>Trabalhamos com componentes selecionados para dar vida longa ao seu aparelho.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="calc-section reveal" id="calculadora">
+        <div class="container">
+            <h2 class="section-title">Simulação de <span>Orçamento</span></h2>
             <div class="calc-box">
-                <div class="calc-header">
-                    <h2 class="calc-title">⚡ Orçamento Instantâneo</h2>
-                    <p class="calc-sub">Monte o seu pedido e veja o valor estimado na hora:</p>
+                
+                <div class="disclaimer-banner">
+                    <span>⚠️</span>
+                    <div>
+                        <strong>Atenção:</strong> Esta simulação gera apenas um <u>preço estimado</u>. O valor final e definitivo será fornecido após o diagnóstico presencial gratuito do seu aparelho.
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label class="form-label" for="device">1. Escolha o Aparelho:</label>
-                    <select id="device" class="form-select">
-                        <option value="">-- Selecione o equipamento --</option>
-                        <option value="celular">📱 Celular / Smartphone</option>
-                        <option value="notebook">💻 Notebook</option>
-                        <option value="computador">🖥️ Computador de Mesa (PC)</option>
-                        <option value="console">🎮 Console / Videogame</option>
-                    </select>
-                </div>
+                <label style="color: var(--neon-purple); font-weight: 700; font-size: 0.9rem;">1. Escolha o Equipamento:</label>
+                <select id="device" class="form-select">
+                    <option value="">-- Selecione o Aparelho --</option>
+                    <option value="celular">📱 Celular / Smartphone</option>
+                    <option value="notebook">💻 Notebook</option>
+                    <option value="pc">🖥️ Computador (PC)</option>
+                    <option value="console">🎮 Console / Videogame</option>
+                </select>
 
-                <div class="form-group">
-                    <label class="form-label" for="service">2. Escolha o Serviço:</label>
-                    <select id="service" class="form-select">
-                        <option value="">-- Primeiro selecione o equipamento acima --</option>
-                    </select>
-                </div>
+                <label style="color: var(--neon-purple); font-weight: 700; font-size: 0.9rem;">2. Escolha o Serviço Pretendido:</label>
+                <select id="service" class="form-select" disabled>
+                    <option value="">-- Selecione o Equipamento Primeiro --</option>
+                </select>
 
-                <div class="form-group">
-                    <label class="delivery-check">
-                        <input type="checkbox" id="delivery">
-                        <span>Quero busca e entrega em casa (Matelândia) (+ R$ 10,00)</span>
-                    </label>
-                </div>
-
-                <div class="result-panel">
-                    <div class="price-label">Estimativa de Preço:</div>
+                <div class="price-display-box">
+                    <div class="price-label">VALOR ESTIMADO (SUJEITO À ANÁLISE)</div>
                     <div class="price-value" id="final-price">R$ 0,00</div>
-                    <div class="price-note">* Diagnóstico final sem custo na loja. Cobramos preço justo pela mão de obra!,Preço apenas da mao de obra para mais detalhes conversar com o venderdor para o orçamento final</div>
-
-                    <button class="btn-whatsapp" id="btn-whatsapp">
-                        💬 Enviar Orçamento Direto no WhatsApp
-                    </button>
+                    <div class="price-subnote">* O valor exato pode variar conforme o modelo e gravidade do dano.</div>
                 </div>
+
+                <button class="btn-whatsapp-calc" id="btn-whatsapp">
+                    💬 Agendar Avaliação Presencial Grátis
+                </button>
             </div>
         </div>
     </section>
 
-    <!-- Vantagens -->
-    <section class="advantages">
+    <section class="services-section reveal" id="servicos">
         <div class="container">
-            <h2 class="section-title">Por que consertar conosco?</h2>
-            <div class="grid-2x2">
-                <div class="card-adv">
-                    <div class="card-adv-icon">🏷️</div>
-                    <h3>Preço Acessível</h3>
-                    <p>Valores populares que cabem no bolso. Consertar sai muito mais barato do que comprar outro novo.</p>
-                </div>
-                <div class="card-adv">
-                    <div class="card-adv-icon">⚡</div>
-                    <h3>Máxima Agilidade</h3>
-                    <p>Serviço rápido para você não ficar isolado do trabalho, família ou jogos.</p>
-                </div>
-                <div class="card-adv">
-                    <div class="card-adv-icon">🔒</div>
-                    <h3>Segurança dos Dados</h3>
-                    <p>Fazemos backup preventivo das suas fotos, conversas e arquivos antes de qualquer procedimento.</p>
-                </div>
-                <div class="card-adv">
-                    <div class="card-adv-icon">🛡️</div>
-                    <h3>Garantia de 90 Dias</h3>
-                    <p>Garantia oficial em peças e mão de obra com transparência e honestidade.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Serviços -->
-    <section class="services-section">
-        <div class="container">
-            <h2 class="section-title">O que nós arrumamos</h2>
+            <h2 class="section-title">Nossa Especialidade em <span>Manutenção</span></h2>
             <div class="grid-services">
                 <div class="service-card">
-                    <div class="service-header">
-                        <span class="icon">📱</span>
-                        <h3>Celulares</h3>
-                    </div>
+                    <h3>📱 Smartphones</h3>
                     <ul class="service-list">
-                        <li>Troca de Tela / Display</li>
-                        <li>Troca de Bateria viciada</li>
-                        <li>Conector de Carga</li>
-                        <li>Banho Químico (molhado)</li>
+                        <li>Troca de Telas e Vidros</li>
+                        <li>Troca de Bateria</li>
                         <li>Microssoldagem em Placa</li>
+                        <li>Recuperação de Aparelhos Molhados</li>
                     </ul>
                 </div>
-
                 <div class="service-card">
-                    <div class="service-header">
-                        <span class="icon">💻</span>
-                        <h3>Notebooks</h3>
-                    </div>
+                    <h3>💻 Notebooks</h3>
                     <ul class="service-list">
-                        <li>Limpeza Interna + Pasta Térmica</li>
-                        <li>Formatação com Backup</li>
-                        <li>Upgrade de SSD e Memória RAM</li>
-                        <li>Troca de Teclado e Tela</li>
-                        <li>Recuperação de Dobradiças</li>
+                        <li>Formatação e Backup</li>
+                        <li>Upgrades de SSD e Memória</li>
+                        <li>Limpeza Térmica Preventiva</li>
+                        <li>Conserto de Dobradiças e Carcaça</li>
                     </ul>
                 </div>
-
                 <div class="service-card">
-                    <div class="service-header">
-                        <span class="icon">🖥️</span>
-                        <h3>Computadores (PC)</h3>
-                    </div>
+                    <h3>🖥️ Computadores</h3>
                     <ul class="service-list">
-                        <li>Formatação e Instalação Windows</li>
-                        <li>Limpeza Geral e Organização</li>
-                        <li>Montagem e Upgrade de Peças</li>
-                        <li>Otimização para Jogos</li>
-                        <li>Troca de Fonte e Placa-Mãe</li>
+                        <li>Montagem de PC Gamer do Zero</li>
+                        <li>Otimização de Desempenho</li>
+                        <li>Troca de Fontes e Placas</li>
+                        <li>Limpeza Interna e Cable Management</li>
                     </ul>
                 </div>
-
                 <div class="service-card">
-                    <div class="service-header">
-                        <span class="icon">🎮</span>
-                        <h3>Consoles</h3>
-                    </div>
+                    <h3>🎮 Consoles</h3>
                     <ul class="service-list">
-                        <li>Limpeza Profunda + Pasta Térmica</li>
-                        <li>Conserto de Controle (Drift)</li>
                         <li>Troca de Conector HDMI</li>
-                        <li>Upgrade de HD para SSD</li>
-                        <li>Reparo em Fonte Interna</li>
+                        <li>Conserto de Drift nos Controles</li>
+                        <li>Limpeza Profunda PS4/PS5/Xbox</li>
+                        <li>Reparo em Placas de Fonte</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <section class="testimonials-section reveal" id="depoimentos">
+        <div class="container">
+            <h2 class="section-title">O Que Dizem Nossos <span>Clientes</span></h2>
+            <div class="grid-testimonials">
+                <div class="testi-card">
+                    <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testi-text">"Excelente atendimento! Consegui acompanhar a troca de tela do meu celular com o código pelo site em tempo real."</p>
+                    <div class="testi-author">— Lucas M. (Matelândia)</div>
+                </div>
+                <div class="testi-card">
+                    <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testi-text">"Meu notebook estava esquentando muito. Fizeram a limpeza térmica e colocaram SSD. O computador está voando!"</p>
+                    <div class="testi-author">— Ana Paula R.</div>
+                </div>
+                <div class="testi-card">
+                    <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testi-text">"Consertaram a entrada HDMI do meu PlayStation 5 rápido e por um preço justo. Atendimento nota 10!"</p>
+                    <div class="testi-author">— Gabriel K.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section reveal" id="faq">
+        <div class="container">
+            <h2 class="section-title">Dúvidas <span>Frequentes</span></h2>
+            <div class="faq-wrapper">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>O valor da calculadora já é o preço definitivo?</span>
+                        <span>❯</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Não. A calculadora gera uma estimativa aproximada. O valor final só é confirmado após a avaliação física gratuita do seu aparelho em nosso laboratório.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Como acompanho meu conserto pelo código?</span>
+                        <span>❯</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Quando você deixa seu aparelho na Nexus Tech, entregamos um código exclusivo (Ex: NX-1020). Digite-o no campo 'Consultar Reparo' no topo do nosso site para ver o status em tempo real!</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Preciso pagar pelo orçamento presencial?</span>
+                        <span>❯</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Não! A avaliação e o orçamento presencial são totalmente gratuitos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section reveal" id="contato">
+        <div class="container">
+            <h2 class="section-title">Venha Conhecer <span>Nossa Loja</span></h2>
+            <div class="contact-box">
+                <div>
+                    <h3 style="color: var(--accent-cyan); font-size: 1.5rem; margin-bottom: 1rem;">Nexus Tech Matelândia</h3>
+                    <p style="color: var(--text-light); margin-bottom: 0.8rem;">📍 Matelândia - PR</p>
+                    <p style="color: var(--text-light); margin-bottom: 0.8rem;">🕒 Segunda a Sexta: 08h às 18h | Sábado: 08h às 12h</p>
+                    <p style="color: var(--text-light); margin-bottom: 1.5rem;">📲 WhatsApp: (45) 99999-9999</p>
+                    
+                    <a href="https://wa.me/5545999999999" target="_blank" class="btn-primary" style="display: inline-flex;">Conversar pelo WhatsApp</a>
+                </div>
+
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1104.3677142526983!2d-53.983007243558376!3d-25.240731596503206!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-BR!2sbr!4v1786548313691!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer>
         <div class="container">
-            <p><strong>Nexus Tech Matelândia</strong> | Centro - Matelândia/PR</p>
-            <p style="margin-top: 6px;">Segunda a Sexta: 08h às 18h | Sábado: 08h às 12h</p>
+            <p><strong>Nexus Tech Matelândia</strong> | Assistência Técnica Especializada</p>
+            <p style="margin-top: 5px; opacity: 0.6;">© 2026 Nexus Tech. Todos os direitos reservados.</p>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+
+    <script>
+        // 1. CONFIGURAÇÃO REAL DO FIREBASE
+        const firebaseConfig = {
+            apiKey: "AIzaSyDYPVAg0_wbgDq2VHmn8AMnnp1zRZ77xlE",
+            authDomain: "nexustech-6f823.firebaseapp.com",
+            projectId: "nexustech-6f823",
+            storageBucket: "nexustech-6f823.firebasestorage.app",
+            messagingSenderId: "592661621874",
+            appId: "1:592661621874:web:7eecff538edebb8381e6eb",
+            measurementId: "G-LTGXYTQZFX"
+        };
+
+        // Inicializa o Firebase e Firestore
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        // 2. BUSCA DE CÓDIGO NO FIREBASE (CONSULTA EM TEMPO REAL NA NUVEM)
+        function searchClientCode() {
+            const code = document.getElementById('client-search-code').value.trim().toUpperCase();
+            const displayBox = document.getElementById('status-display');
+
+            if (!code) {
+                alert('Por favor, digite o código do seu produto!');
+                return;
+            }
+
+            db.collection("reparos").doc(code).get().then((doc) => {
+                if (doc.exists) {
+                    const item = doc.data();
+                    document.getElementById('res-product').innerText = item.product;
+                    document.getElementById('res-client').innerText = item.client;
+                    document.getElementById('res-status-text').innerText = item.status;
+
+                    updateTimelineSteps(item.status);
+                    displayBox.style.display = 'block';
+                } else {
+                    alert('Código não encontrado! Verifique se digitou corretamente ou consulte a loja pelo WhatsApp.');
+                    displayBox.style.display = 'none';
+                }
+            }).catch((error) => {
+                console.error("Erro ao buscar no Firebase:", error);
+                alert('Ocorreu um erro ao conectar ao servidor. Tente novamente mais tarde.');
+            });
+        }
+
+        // 3. ATUALIZAÇÃO DA LINHA DO TEMPO VISUAL
+        function updateTimelineSteps(statusText) {
+            const lower = statusText.toLowerCase();
+            const s1 = document.getElementById('step-1');
+            const s2 = document.getElementById('step-2');
+            const s3 = document.getElementById('step-3');
+            const s4 = document.getElementById('step-4');
+
+            [s1, s2, s3, s4].forEach(s => s.classList.remove('active'));
+
+            s1.classList.add('active');
+
+            if (lower.includes('análise') || lower.includes('analise') || lower.includes('orçamento')) {
+                s2.classList.add('active');
+            } else if (lower.includes('reparo') || lower.includes('manutenção') || lower.includes('troca')) {
+                s2.classList.add('active');
+                s3.classList.add('active');
+            } else if (lower.includes('pronto') || lower.includes('retirada') || lower.includes('concluído')) {
+                s2.classList.add('active');
+                s3.classList.add('active');
+                s4.classList.add('active');
+            }
+        }
+
+        // 4. MENU MOBILE TOGGLE
+        function toggleMobileMenu() {
+            document.getElementById('main-nav').classList.toggle('mobile-active');
+        }
+        function closeMobileMenu() {
+            document.getElementById('main-nav').classList.remove('mobile-active');
+        }
+
+        // 5. CALCULADORA DE ORÇAMENTO COM ESTIMATIVA
+        const serviceData = {
+            celular: [{ text: "Troca de Tela", price: 180 }, { text: "Troca de Bateria", price: 120 }, { text: "Conector de Carga", price: 90 }],
+            notebook: [{ text: "Limpeza + Pasta Térmica", price: 100 }, { text: "Upgrade SSD 240GB", price: 210 }, { text: "Formatação Completa", price: 90 }],
+            pc: [{ text: "Formatação com Backup", price: 80 }, { text: "Montagem de PC Gamer", price: 140 }, { text: "Limpeza Geral", price: 90 }],
+            console: [{ text: "Reparo de Controle (Drift)", price: 75 }, { text: "Troca Conector HDMI", price: 190 }, { text: "Limpeza Interna", price: 130 }]
+        };
+
+        const deviceSelect = document.getElementById('device');
+        const serviceSelect = document.getElementById('service');
+        const priceDisplay = document.getElementById('final-price');
+
+        deviceSelect.addEventListener('change', function() {
+            const dev = this.value;
+            serviceSelect.innerHTML = '';
+            if (dev && serviceData[dev]) {
+                serviceSelect.disabled = false;
+                serviceSelect.innerHTML = '<option value="">-- Selecione o Serviço --</option>';
+                serviceData[dev].forEach(s => {
+                    const opt = document.createElement('option');
+                    opt.value = s.price;
+                    opt.textContent = `${s.text} (Estimativa R$ ${s.price},00)`;
+                    serviceSelect.appendChild(opt);
+                });
+            } else {
+                serviceSelect.disabled = true;
+                serviceSelect.innerHTML = '<option value="">-- Escolha o Equipamento Primeiro --</option>';
+            }
+            priceDisplay.textContent = "R$ 0,00";
+        });
+
+        serviceSelect.addEventListener('change', function() {
+            const val = parseFloat(this.value) || 0;
+            priceDisplay.textContent = `R$ ${val.toFixed(2).replace('.', ',')}`;
+        });
+
+        document.getElementById('btn-whatsapp').addEventListener('click', function() {
+            const phone = "554599819588";
+            const msg = `Olá Nexus Tech, fiz uma estimativa inicial no site de ${priceDisplay.textContent} e gostaria de agendar uma avaliação técnica gratuita do meu aparelho!`;
+            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
+        });
+
+        // 6. FAQ ACCORDION
+        document.querySelectorAll('.faq-question').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const parent = btn.parentElement;
+                parent.classList.toggle('active');
+            });
+        });
+
+        // 7. EFEITO DE ROLAGEM
+        const reveals = document.querySelectorAll('.reveal');
+        function revealOnScroll() {
+            reveals.forEach(r => {
+                if (r.getBoundingClientRect().top < window.innerHeight * 0.88) {
+                    r.classList.add('active');
+                }
+            });
+        }
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll();
+    </script>
 </body>
 </html>
